@@ -44,7 +44,11 @@
 	- Mientras la respuesta ingresada no sea igual a las opciones o no se ingrese nada, se repetirá el bucle pidiendo una opción.
 
 
-##### Este archivo es la versión `0.0.1`
+#### Diagrama de flujo
+![Image of imgur](https://i.imgur.com/0nbmdV3.jpg)
+
+
+##### Este archivo es la versión `0.0.2`
 
 
 
