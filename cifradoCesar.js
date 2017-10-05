@@ -16,7 +16,7 @@ function gettingPhrase(){
 return phrase;
 }
 
-var obtainedPhrase = gettingPhrase();  // solo funciona con mayúsculas :c me aseguro de que la frase obtenida lo sea.
+var obtainedPhrase = gettingPhrase().toUpperCase();  // solo funciona con mayúsculas :c me aseguro de que la frase obtenida lo sea.
 
 // Si le entrego "ABCD", debe devolver "HIJK"
 function cipher(){
@@ -27,7 +27,7 @@ function cipher(){
 		}
 		else {
 		var letters = obtainedPhrase.charCodeAt(i); // codifica a ASCII las letras de la frase
-			letters = (((letters - 65) + 33) % 26) + 65; // fórmula para cifrar
+			letters = (((letters - 65) + 7) % 26) + 65; // fórmula para cifrar
 			letters = String.fromCharCode(letters); // devuelve las letras de lo cifrado
 			cipherPhrase = cipherPhrase + letters;
 		}
@@ -44,7 +44,7 @@ function decipher() {  //(x - 23 + 26) % 26 da positivo
 		}
 		else {
 		var letters = obtainedPhrase.charCodeAt(i); // codifica a ASCII las letras de la frase
-			letters = ((((letters - 65) - 33)+26) % 26) + 65; // fórmula para descifrar
+			letters = ((((letters - 65) - 7)+26) % 26) + 65; // fórmula para descifrar
 			letters = String.fromCharCode(letters); // devuelve las letras de lo descifrado
 			decipherPhrase = decipherPhrase + letters;
 		}
@@ -58,11 +58,11 @@ function start(){
 		if (response !== "") {
 			if (response == "1") {
 				cipher(obtainedPhrase);
-				//response = 3;
+				// response = 3;
 			} 
 			else if (response == "2") {
 				decipher(obtainedPhrase);
-				//response = 3;
+				// response = 3;
 			}
 			else if (response == "3") {
 				break;
