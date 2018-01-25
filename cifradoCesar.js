@@ -3,7 +3,8 @@
 */
 function gettingPhrase() {
   do {
-    var success = true; // variable auxiliar
+    // variable auxiliar
+    var success = true;
     var phrase = prompt('Ingresa una frase');
     if (phrase.length === 0) {
       alert('Por favor, ingresa una frase');
@@ -19,34 +20,49 @@ function gettingPhrase() {
   return phrase;
 }
 
-var obtainedPhrase = gettingPhrase().toUpperCase(); // solo funciona con mayúsculas :c me aseguro de que la frase obtenida lo sea.
-
+// solo funciona con mayúsculas :c me aseguro de que la frase obtenida lo sea.
+var obtainedPhrase = gettingPhrase().toUpperCase();
 // Si le entrego "ABCD", debe devolver "HIJK"
 function cipher() {
-  var cipherPhrase = ''; // vacía, para recibir los índices cifrados
-  for (var i = 0; i < obtainedPhrase.length; i++) { // recorre la frase obtenida
-    if (obtainedPhrase[i] === ' ') { // si la frase tiene espacio, devuelve espacio
+  // variable acía, para recibir los índices cifrados
+  var cipherPhrase = '';
+  // recorro la frase obtenida
+  for (var i = 0; i < obtainedPhrase.length; i++) {
+    // si la frase tiene espacio, devuelve espacio
+    if (obtainedPhrase[i] === ' ') {
       cipherPhrase = cipherPhrase + ' ';
     } else {
-      var letters = obtainedPhrase.charCodeAt(i); // codifica a ASCII las letras de la frase
-      letters = (((letters - 65) + 7) % 26) + 65; // fórmula para cifrar
-      letters = String.fromCharCode(letters); // devuelve las letras de lo cifrado
+      // codifica a ASCII las letras de la frase
+      var letters = obtainedPhrase.charCodeAt(i);
+      // fórmula para cifrar
+      letters = (((letters - 65) + 7) % 26) + 65;
+      // devuelve las letras de lo cifrado
+      letters = String.fromCharCode(letters);
       cipherPhrase = cipherPhrase + letters;
     }
   }
   return alert('Tu frase cifrada se ve así: \n' + cipherPhrase);
 }
 
-// Si le entrego "HIJK", debe devolver "ABCD"
-function decipher() { //(x - 23 + 26) % 26 da positivo
-  var decipherPhrase = ''; // vacía, para recibir los índices descifrados
-  for (var i = 0; i < obtainedPhrase.length; i++) { // recorre la frase obtenida
-    if (obtainedPhrase[i] === ' ') { // si la frase tiene espacio, devuelve espacio
+/*
+* Si le entrego "HIJK", debe devolver "ABCD"
+* (x - 23 + 26) % 26 da positivo
+*/
+function decipher() {
+  // vacía, para recibir los índices descifrados
+  var decipherPhrase = '';
+  // recorre la frase obtenida
+  for (var i = 0; i < obtainedPhrase.length; i++) {
+    // si la frase tiene espacio, devuelve espacio
+    if (obtainedPhrase[i] === ' ') {
       decipherPhrase = decipherPhrase + ' ';
     } else {
-      var letters = obtainedPhrase.charCodeAt(i); // codifica a ASCII las letras de la frase
-      letters = ((((letters - 65) - 7) + 26) % 26) + 65; // fórmula para descifrar
-      letters = String.fromCharCode(letters); // devuelve las letras de lo descifrado
+      // codifica a ASCII las letras de la frase
+      var letters = obtainedPhrase.charCodeAt(i);
+      // fórmula para descifrar
+      letters = ((((letters - 65) - 7) + 26) % 26) + 65;
+      // devuelve las letras de lo descifrado
+      letters = String.fromCharCode(letters);
       decipherPhrase = decipherPhrase + letters;
     }
   }
@@ -55,7 +71,10 @@ function decipher() { //(x - 23 + 26) % 26 da positivo
 
 function start() {
   do {
-    var response = prompt('Ingresa el número de lo que deseas hacer: \n  1: si quieres cifrar tu frase \n  2: si quieres descifrar tu frase \n  3: si quieres salir :)');
+    var response = prompt('Ingresa el número de lo que deseas hacer: \n ' +
+      '1: si quieres cifrar tu frase \n ' +
+      '2: si quieres descifrar tu frase \n ' +
+      '3: si quieres salir :)');
     if (response !== '') {
       if (response === '1') {
         cipher(obtainedPhrase);
